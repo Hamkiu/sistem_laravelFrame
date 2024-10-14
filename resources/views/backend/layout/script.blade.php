@@ -13,36 +13,15 @@
         <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{asset('template/src/plugins/src/apex/apexcharts.min.js')}}"></script>
-        <script src="{{asset('template/src/assets/js/dashboard/dash_1.js')}}"></script>\
+        <script src="{{asset('template/src/assets/js/dashboard/dash_1.js')}}"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
-        <script type="importmap">
-            {
-                "imports": {
-                    "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.js",
-                    "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.2.0/"
-                }
-            }
-        </script>
-        <script type="module">
-            import {
-                ClassicEditor,
-                Essentials,
-                Paragraph,
-                Bold,
-                Italic,
-                Font
-            } from 'ckeditor5';
-
+        <script>
+            
             ClassicEditor
-                .create( document.querySelector( '#editor' ), {
-                    plugins: [ Essentials, Paragraph, Bold, Italic, Font ],
-                    toolbar: [
-						'undo', 'redo', '|', 'bold', 'italic', '|',
-						'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-                    ]
-                } )
+                .create( document.querySelector( '#editor' ))
                 .then( editor => {
-                    window.editor = editor;
+                    console.log (editor);
                 } )
                 .catch( error => {
                     console.error( error );

@@ -26,7 +26,7 @@
                     <table class="table table-hover table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th class="" scope="col"><b>Id</b></th>
+                            <th class="" scope="col"><b>No</b></th>
                             <th scope="col"><b>Nama Task</b></th>
                             <th class="text-center" scope="col"><b>Tindakan</b></th>
                         </tr>

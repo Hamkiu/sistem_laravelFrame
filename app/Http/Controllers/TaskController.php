@@ -62,6 +62,7 @@ class TaskController extends Controller
     }
 
     public function delete($id){
+        // dd($id);
         $task = Task::findOrFail($id);
 
         try{
