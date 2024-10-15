@@ -49,6 +49,14 @@ return [
             'driver' => 'session',
             'provider' => 'user',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+        'author' => [
+            'driver' => 'session',
+            'provider' => 'author',
+        ],
         'user-api' => [
             'driver' => 'session',
             'provider' => 'user',
@@ -81,6 +89,14 @@ return [
         'user' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'author' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
     ],
 

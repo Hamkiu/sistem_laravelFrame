@@ -19,7 +19,11 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-       if(Auth::guard('user')->check()){
+       if(Auth::guard('admin')->check()){
+        return redirect(route('dashboard.index'));
+       }else if(Auth::guard('author')->check()){
+        return redirect(route('dashboard.index'));
+       }else if(Auth::guard('user')->check()){
         return redirect(route('dashboard.index'));
        }
 

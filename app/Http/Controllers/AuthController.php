@@ -16,8 +16,12 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-        if(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
+        
+        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password, 'role'=>'admin'])){
+            return redirect()->intended('/admin');
+        }else if(Auth::guard('author')->attempt(['email' => $request->email, 'password' => $request->password, 'role'=>'author'])){
+            return redirect()->intended('/admin');
+        }else if(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
             return redirect()->intended('/admin');
         }else{
             return redirect(route('auth.index'))->with('error', 'Email or Password is Wrong');
@@ -28,6 +32,10 @@ class AuthController extends Controller
     public function logout(){
         if(Auth::guard('user')->check()){
             Auth::guard('user')->logout();
+        }else if(Auth::guard('admin')->check()){
+            Auth::guard('admin')->logout();
+        }else if(Auth::guard('author')->check()){
+            Auth::guard('author')->logout();
         }
         return redirect(route('auth.index'));
     }

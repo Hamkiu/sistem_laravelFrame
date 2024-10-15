@@ -31,5 +31,10 @@ class DatabaseSeeder extends Seeder
             'gambar_form' => 'lorem.jpg',
             'id_task' => 1
         ]);
+
+        DB::table('admins')->insert([
+            ['name' => 'Admin', 'email' => 'admin@email.com', 'password' =>bcrypt('admin'), 'role' => 'admin'],
+            ['name' => 'Author', 'email' => 'author@email.com', 'password' =>bcrypt('author'), 'role' => 'author'],
+        ]);
     }
 }
