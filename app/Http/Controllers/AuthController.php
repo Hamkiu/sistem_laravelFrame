@@ -16,13 +16,14 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        // dd($request);
         
         if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password, 'role'=>'admin'])){
-            return redirect()->intended('/admin');
+            return redirect()->intended('/dashboard');
         }else if(Auth::guard('author')->attempt(['email' => $request->email, 'password' => $request->password, 'role'=>'author'])){
-            return redirect()->intended('/admin');
+            return redirect()->intended('/dashboard');
         }else if(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect()->intended('/admin');
+            return redirect()->intended('/dashboard');
         }else{
             return redirect(route('auth.index'))->with('error', 'Email or Password is Wrong');
 

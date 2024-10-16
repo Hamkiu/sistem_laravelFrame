@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/login',[AuthController::class, 'index'])->name('auth.index');
-Route::post('/login',[AuthController::class, 'verify'])->name('auth.verify');
+Route::post('/auth/verify',[AuthController::class, 'verify'])->name('auth.verify');
 
 Route::group(['middleware' => 'auth:admin'], function(){
-    Route::prefix('admin')->group(function(){
+    Route::prefix('dashboard')->group(function(){
         Route::get('/',[DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/profile',[DashboardController::class, 'profile'])->name('dashboard.profile');
 
@@ -51,11 +51,11 @@ Route::group(['middleware' => 'auth:admin'], function(){
         });
 
     });
-    Route::get('/logout',[AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/auth/logout',[AuthController::class, 'logout'])->name('auth.logout');
 });
 
 Route::group(['middleware' => 'auth:user'], function(){
-    Route::prefix('admin')->group(function(){
+    Route::prefix('dashboard')->group(function(){
         Route::get('/',[DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/profile',[DashboardController::class, 'profile'])->name('dashboard.profile');
 
@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth:user'], function(){
 });
 
 Route::group(['middleware' => 'auth:author'], function(){
-    Route::prefix('admin')->group(function(){
+    Route::prefix('dashboard')->group(function(){
         Route::get('/',[DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/profile',[DashboardController::class, 'profile'])->name('dashboard.profile');
 
