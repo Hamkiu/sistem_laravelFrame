@@ -51,11 +51,11 @@ return [
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ],
         'author' => [
             'driver' => 'session',
-            'provider' => 'author',
+            'provider' => 'authors',
         ],
         'user-api' => [
             'driver' => 'session',
@@ -90,11 +90,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        'author' => [
+        'authors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
